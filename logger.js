@@ -1,8 +1,14 @@
+const EventsEmiter = require('events');
+
 var url = "http://elminsonlog.io/log";
 
-function log(message) {
-    //Send http request
-    console.log(message);
+class Logger extends EventsEmiter {
+    log(message) {
+        //Send http request
+        console.log(message);
+        this.emit('messageLogged', {id: 1, url: "http//"});
+
+    }
 }
 
-module.exports.log = log;
+module.exports = Logger;
